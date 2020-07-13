@@ -43,17 +43,15 @@ public class Parkgoer : MonoBehaviour
                 {
                     SelectNewTargetAnchor();
                 }
-                if (targetAnchor)
-                    targetPosition = targetAnchor.GetPosition();
             }
-            // Move towards target object position
+            // Else prepare to move towards target object position
             else
             {
                 targetPosition = targetObject.transform.position; // default target pos to targetobject position
                 SelectNewTargetAnchor();
-                if (targetAnchor)
-                    targetPosition = targetAnchor.GetPosition();
             }
+            if (targetAnchor)
+                targetPosition = targetAnchor.GetPosition();
         }
 
         // Apply movement
@@ -73,7 +71,7 @@ public class Parkgoer : MonoBehaviour
         potentialTargetObjects = GameObject.FindGameObjectsWithTag("ParkElement");
         if (potentialTargetObjects.Length > 0)
         {
-            int ind = Mathf.RoundToInt(Random.Range(0, potentialTargetObjects.Length));
+            int ind = Random.Range(0, potentialTargetObjects.Length);
             targetObject = potentialTargetObjects[ind];
             targetObjectInfo = targetObject.GetComponent<ObjectInfo>();
         }
@@ -116,7 +114,7 @@ public class Parkgoer : MonoBehaviour
 
     public void SetRunning(bool tf)
     {
-        if (spd != maxSpd)
+        if (tf)
             spd = maxSpd;
         else
             spd = 0.5f * maxSpd;
