@@ -12,10 +12,14 @@ public class Parkgoer : MonoBehaviour
     private Anchor targetAnchor;
     private Rigidbody rb;
     private GameObject[] potentialTargetObjects;
+    private ParkgoerInfo parkgoerInfo;
 
     // Start is called before the first frame update
     void Start()
     {
+        parkgoerInfo = new ParkgoerInfo();
+        //print(parkgoerInfo.GetName());
+
         if (maxSpd == -1.0f)
         {
             // Randomize max speed
