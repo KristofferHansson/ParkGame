@@ -22,8 +22,8 @@ public class Parkgoer : MonoBehaviour
 
         if (maxSpd == -1.0f)
         {
-            // Randomize max speed
-            maxSpd = Random.Range(5f, 10f);
+            // Get randomized max speed from pgInfo
+            maxSpd = parkgoerInfo.GetMaxSpeed();
         }
         spd = maxSpd;
 
@@ -43,7 +43,7 @@ public class Parkgoer : MonoBehaviour
             {
                 // If anchor is invalid (no longer available)
                 // Occupied by different PG?
-                if (targetAnchor.IsOccupied() && !targetAnchor.IsOccupiedBy(gameObject))
+                if (targetAnchor.IsOccupied() && !targetAnchor.IsOccupiedBy(this.gameObject))
                 {
                     SelectNewTargetAnchor();
                 }
